@@ -1,0 +1,31 @@
+<h1>Listing comments</h1>
+
+<table>
+  <tr>
+    <th>Author</th>
+    <th>Body</th>
+    <th>Ip</th>
+    <th>Rating</th>
+    <th>Photo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment.author %></td>
+    <td><%= comment.body %></td>
+    <td><%= comment.ip %></td>
+    <td><%= comment.rating %></td>
+    <td><%= comment.photo_id %></td>
+    <td><%= link_to 'Show', [comment.photo, comment] %></td>
+    <td><%= link_to 'Edit', edit_photo_comment_path(comment.photo, comment) %></td>
+    <td><%= link_to 'Destroy', [comment.photo, comment], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Comment', new_photo_comment_path %>
